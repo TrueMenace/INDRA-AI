@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { Upload, Mic } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useMemory } from "../../context/MemoryContext";
 
 import Button from "../ui/Button";
 import Card from "../ui/Card";
@@ -11,6 +12,8 @@ export default function AudioUpload() {
     useState<File | null>(null);
 
   const navigate = useNavigate();
+
+  const { addRecord } = useMemory();
 
   const [loading, setLoading] = useState(false);
 
@@ -40,11 +43,30 @@ export default function AudioUpload() {
   }
 
   async function handleContinue() {
+    if (!selectedFile) return;
+
     setLoading(true);
 
     await new Promise((resolve) =>
       setTimeout(resolve, 2000)
     );
+
+    addRecord({
+      id: Date.now(),
+
+      title: selectedFile.name.replace(/\.[^/.]+$/, ""),
+
+      department: "Pending Review",
+
+      transcript:
+        "Transcript will be generated after AI processing.",
+
+      tags: ["New Upload"],
+
+      approved: false,
+
+      recentlyAdded: true,
+    });
 
     navigate("/review");
   }

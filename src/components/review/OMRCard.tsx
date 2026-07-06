@@ -1,9 +1,18 @@
 import Card from "../ui/Card";
 
-export default function OMRCard() {
+interface OMRCardProps {
+  title: string;
+  department: string;
+  tags: string[];
+}
+
+export default function OMRCard({
+  title,
+  department,
+  tags,
+}: OMRCardProps) {
   return (
     <Card className="space-y-6">
-
       <div>
         <h2 className="text-xl font-semibold">
           AI Generated Operational Memory
@@ -20,7 +29,17 @@ export default function OMRCard() {
         </label>
 
         <p className="mt-1 text-lg font-medium">
-          VPN Failure after Windows Update
+          {title}
+        </p>
+      </div>
+
+      <div>
+        <label className="text-sm font-semibold text-slate-500">
+          Department
+        </label>
+
+        <p className="mt-1">
+          {department}
         </p>
       </div>
 
@@ -30,7 +49,7 @@ export default function OMRCard() {
         </label>
 
         <p className="mt-1">
-          Users were unable to establish a VPN connection after a Windows update.
+          Users experienced an operational issue requiring investigation.
         </p>
       </div>
 
@@ -40,7 +59,7 @@ export default function OMRCard() {
         </label>
 
         <p className="mt-1">
-          Outdated OpenSSL libraries became incompatible after the operating system update.
+          AI extracted the most probable root cause from the uploaded recording.
         </p>
       </div>
 
@@ -50,9 +69,9 @@ export default function OMRCard() {
         </label>
 
         <ol className="list-decimal pl-5 mt-2 space-y-2">
-          <li>Update OpenSSL libraries.</li>
-          <li>Restart the VPN service.</li>
-          <li>Verify secure connectivity.</li>
+          <li>Investigate the issue.</li>
+          <li>Apply the recommended fix.</li>
+          <li>Verify successful operation.</li>
         </ol>
       </div>
 
@@ -62,7 +81,7 @@ export default function OMRCard() {
         </label>
 
         <p className="mt-1">
-          Validate dependency compatibility before deploying operating system updates.
+          Capture this knowledge so similar incidents can be resolved faster.
         </p>
       </div>
 
@@ -72,20 +91,16 @@ export default function OMRCard() {
         </label>
 
         <div className="flex flex-wrap gap-2 mt-2">
-          <span className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-700">
-            VPN
-          </span>
-
-          <span className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-700">
-            Windows
-          </span>
-
-          <span className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-700">
-            OpenSSL
-          </span>
+          {tags.map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-700"
+            >
+              {tag}
+            </span>
+          ))}
         </div>
       </div>
-
     </Card>
   );
 }

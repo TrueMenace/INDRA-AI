@@ -1,13 +1,16 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { CheckCircle2 } from "lucide-react";
 
 import Card from "../ui/Card";
 import Button from "../ui/Button";
 
-export default function ApprovalCard() {
-  const navigate = useNavigate();
+interface ApprovalCardProps {
+  onApprove: () => void;
+}
 
+export default function ApprovalCard({
+  onApprove,
+}: ApprovalCardProps) {
   const [saving, setSaving] = useState(false);
 
   async function handleApprove() {
@@ -17,19 +20,19 @@ export default function ApprovalCard() {
       setTimeout(resolve, 1500)
     );
 
-    navigate("/memory");
+    onApprove();
   }
 
   return (
     <Card className="space-y-6">
-
       <div>
         <h2 className="text-xl font-semibold">
           Knowledge Approval
         </h2>
 
         <p className="text-slate-500 mt-1">
-          Review the generated Operational Memory Record before publishing it to Enterprise Memory.
+          Review the generated Operational Memory Record
+          before publishing it to Enterprise Memory.
         </p>
       </div>
 
@@ -50,9 +53,10 @@ export default function ApprovalCard() {
       >
         <CheckCircle2 size={18} />
 
-        {saving ? "Approving..." : "Approve Knowledge"}
+        {saving
+          ? "Approving..."
+          : "Approve Knowledge"}
       </Button>
-
     </Card>
   );
 }
