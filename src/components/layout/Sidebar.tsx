@@ -1,47 +1,74 @@
 import { NavLink } from "react-router-dom";
+
 import {
   Home,
-  Mic,
+  FileUp,
   ClipboardCheck,
   Database,
-  MessageSquare,
+  Bot,
+  Network,
+  Wrench,
+  ShieldCheck,
+  Lightbulb,
 } from "lucide-react";
 
 const navigationItems = [
   {
-    title: "Home",
+    title: "Dashboard",
     path: "/",
     icon: Home,
   },
   {
-    title: "Capture Knowledge",
+    title: "Knowledge Ingestion",
     path: "/capture",
-    icon: Mic,
+    icon: FileUp,
   },
   {
-    title: "Review & Approve",
+    title: "Review & Validate",
     path: "/review",
     icon: ClipboardCheck,
   },
   {
-    title: "Enterprise Memory",
+    title: "Knowledge Repository",
     path: "/memory",
     icon: Database,
   },
   {
-    title: "Ask Memory",
+    title: "Industrial Copilot",
     path: "/ask",
-    icon: MessageSquare,
+    icon: Bot,
   },
+
+  {
+  title: "Knowledge Graph",
+  path: "/knowledge-graph",
+  icon: Network,
+},
+{
+  title: "Maintenance Intelligence",
+  path: "/maintenance",
+  icon: Wrench,
+},
+{
+  title: "Compliance Intelligence",
+  path: "/compliance",
+  icon: ShieldCheck,
+},
+{
+  title: "Lessons Learned",
+  path: "/lessons",
+  icon: Lightbulb,
+},
 ];
 
 export default function Sidebar() {
   return (
     <aside className="w-64 bg-slate-900 text-white min-h-screen">
       <div className="px-6 py-6 border-b border-slate-700">
-        <h2 className="text-lg font-bold">EOMS</h2>
+        <h2 className="text-lg font-bold">INDRA AI</h2>
+
         <p className="text-sm text-slate-400 mt-1">
-          Enterprise Memory
+          Industrial Knowledge Intelligence
         </p>
       </div>
 

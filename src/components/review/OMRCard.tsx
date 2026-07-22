@@ -15,17 +15,18 @@ export default function OMRCard({
     <Card className="space-y-6">
       <div>
         <h2 className="text-xl font-semibold">
-          AI Generated Operational Memory
+          AI Generated Industrial Knowledge Record
         </h2>
 
         <p className="text-slate-500 mt-1">
-          Structured operational knowledge extracted from the transcript.
+          Structured engineering knowledge automatically extracted and organized
+          from industrial documents.
         </p>
       </div>
 
       <div>
         <label className="text-sm font-semibold text-slate-500">
-          Title
+          Document Name
         </label>
 
         <p className="mt-1 text-lg font-medium">
@@ -35,7 +36,7 @@ export default function OMRCard({
 
       <div>
         <label className="text-sm font-semibold text-slate-500">
-          Department
+          Plant / Business Function
         </label>
 
         <p className="mt-1">
@@ -45,49 +46,52 @@ export default function OMRCard({
 
       <div>
         <label className="text-sm font-semibold text-slate-500">
-          Problem
+          Detected Asset
         </label>
 
         <p className="mt-1">
-          Users experienced an operational issue requiring investigation.
+          PUMP-101 (AI Extracted)
         </p>
       </div>
 
       <div>
         <label className="text-sm font-semibold text-slate-500">
-          Root Cause
+          Document Category
         </label>
 
         <p className="mt-1">
-          AI extracted the most probable root cause from the uploaded recording.
+          Preventive Maintenance Record
         </p>
       </div>
 
       <div>
         <label className="text-sm font-semibold text-slate-500">
-          Resolution
+          AI Summary
+        </label>
+
+        <p className="mt-1">
+          AI identified critical equipment information, maintenance history,
+          operational procedures, and engineering relationships from the uploaded
+          document.
+        </p>
+      </div>
+
+      <div>
+        <label className="text-sm font-semibold text-slate-500">
+          Engineering Recommendation
         </label>
 
         <ol className="list-decimal pl-5 mt-2 space-y-2">
-          <li>Investigate the issue.</li>
-          <li>Apply the recommended fix.</li>
-          <li>Verify successful operation.</li>
+          <li>Inspect the affected asset.</li>
+          <li>Review historical maintenance records.</li>
+          <li>Verify operating parameters.</li>
+          <li>Update the centralized knowledge repository.</li>
         </ol>
       </div>
 
       <div>
         <label className="text-sm font-semibold text-slate-500">
-          Prevention
-        </label>
-
-        <p className="mt-1">
-          Capture this knowledge so similar incidents can be resolved faster.
-        </p>
-      </div>
-
-      <div>
-        <label className="text-sm font-semibold text-slate-500">
-          Tags
+          Knowledge Entities
         </label>
 
         <div className="flex flex-wrap gap-2 mt-2">
@@ -99,6 +103,18 @@ export default function OMRCard({
               {tag}
             </span>
           ))}
+
+          <span className="rounded-full bg-green-100 px-3 py-1 text-sm text-green-700">
+            Equipment
+          </span>
+
+          <span className="rounded-full bg-green-100 px-3 py-1 text-sm text-green-700">
+            Maintenance
+          </span>
+
+          <span className="rounded-full bg-green-100 px-3 py-1 text-sm text-green-700">
+            Inspection
+          </span>
         </div>
       </div>
     </Card>

@@ -1,27 +1,59 @@
-import { Search } from "lucide-react";
+import { Search, Sparkles } from "lucide-react";
 
 import Card from "../ui/Card";
 import Button from "../ui/Button";
 
-export default function AskInput() {
+interface AskInputProps {
+  question: string;
+  setQuestion: React.Dispatch<
+    React.SetStateAction<string>
+  >;
+  onAsk: () => void;
+}
+
+const suggestions = [
+  "Why did Pump-101 fail repeatedly?",
+  "Show maintenance history of Boiler-3",
+  "Find inspection reports for Compressor-A",
+  "List overdue preventive maintenance",
+  "Show similar bearing failures",
+  "Open SOP for Motor-204",
+];
+
+export default function AskInput({
+  question,
+  setQuestion,
+  onAsk,
+}: AskInputProps) {
   return (
     <Card>
+      <div className="flex items-center gap-3">
+        <Sparkles className="text-blue-600" size={26} />
 
-      <h2 className="text-xl font-semibold">
-        Ask Enterprise Memory
-      </h2>
+        <div>
+          <h2 className="text-2xl font-semibold">
+            Ask INDRA AI
+          </h2>
 
-      <p className="mt-2 text-slate-600">
-        Search validated operational knowledge using natural language.
-      </p>
+          <p className="text-slate-600 mt-1">
+            Ask questions across industrial assets,
+            engineering documents, maintenance records,
+            incidents and expert knowledge.
+          </p>
+        </div>
+      </div>
 
       <textarea
         rows={4}
-        placeholder="Example: Why did the VPN stop working after Windows update?"
+        value={question}
+        onChange={(event) =>
+          setQuestion(event.target.value)
+        }
+        placeholder="Example: Why did Pump-101 fail repeatedly?"
         className="
           mt-6
           w-full
-          rounded-lg
+          rounded-xl
           border
           border-slate-300
           p-4
@@ -31,14 +63,42 @@ export default function AskInput() {
         "
       />
 
+      <div className="mt-5">
+        <p className="text-sm font-medium text-slate-600 mb-3">
+          Suggested Questions
+        </p>
+
+        <div className="flex flex-wrap gap-2">
+          {suggestions.map((item) => (
+            <button
+              key={item}
+              onClick={() => setQuestion(item)}
+              className="
+                rounded-full
+                border
+                border-slate-300
+                px-4
+                py-2
+                text-sm
+                hover:bg-blue-50
+                hover:border-blue-400
+                transition
+              "
+            >
+              {item}
+            </button>
+          ))}
+        </div>
+      </div>
+
       <Button
-        className="mt-5 flex items-center gap-2"
+        onClick={onAsk}
+        className="mt-6 flex items-center gap-2"
       >
         <Search size={18} />
 
-        Ask AI
+        Ask INDRA AI
       </Button>
-
     </Card>
   );
 }

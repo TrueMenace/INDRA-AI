@@ -1,30 +1,41 @@
+import { useNavigate } from "react-router-dom";
+
 import TranscriptCard from "../components/review/TranscriptCard";
 import OMRCard from "../components/review/OMRCard";
 import ClarificationCard from "../components/review/ClarificationCard";
 import ApprovalCard from "../components/review/ApprovalCard";
+
 import { useMemory } from "../context/MemoryContext";
-import { useNavigate } from "react-router-dom";
 
 export default function ReviewApprove() {
   const { records, updateRecord } = useMemory();
 
   const navigate = useNavigate();
 
-  const pendingRecord = records.find(
-    (record) => !record.approved
-  );
+  const pendingRecord = [...records]
+    .reverse()
+    .find((record) => !record.approved);
+
+  if (!pendingRecord) {
+    return (
+      <div className="text-center py-20">
+        <h2 className="text-2xl font-bold">
+          No documents awaiting validation
+        </h2>
+
+        <p className="text-slate-500 mt-3">
+          Upload industrial documents to begin AI knowledge extraction and validation.
+        </p>
+      </div>
+    );
+  }
+
+  // TypeScript now knows this is defined
+  const record = pendingRecord;
 
   function handleApprove() {
-    if (!pendingRecord) return;
-
-    updateRecord(pendingRecord.id, {
+    updateRecord(record.id, {
       approved: true,
-      department: "Engineering",
-      tags: [
-        ...pendingRecord.tags,
-        "Approved",
-        "AI Extracted",
-      ],
       recentlyAdded: true,
     });
 
@@ -33,44 +44,31 @@ export default function ReviewApprove() {
 
   return (
     <div className="space-y-6">
-
       <div>
-
         <h1 className="text-4xl font-bold">
-          Review & Approve
+          Expert Validation Workspace
         </h1>
 
         <p className="text-slate-600 mt-2">
-          Review AI-generated operational knowledge before
-          publishing it to Enterprise Memory.
+          Review AI-extracted entities, engineering knowledge, and document insights before publishing them to the Industrial Knowledge Repository.
         </p>
-
       </div>
 
       <TranscriptCard
-        transcript={
-          pendingRecord?.transcript ??
-          "No transcript available."
-        }
+        transcript={record.transcript}
       />
+
       <OMRCard
-        title={
-          pendingRecord?.title ??
-          "Untitled Record"
-        }
-        department={
-          pendingRecord?.department ??
-          "Pending Review"
-        }
-        tags={
-          pendingRecord?.tags ?? []
-        }
+        title={record.title}
+        department={record.department}
+        tags={record.tags}
       />
+
       <ClarificationCard />
+
       <ApprovalCard
         onApprove={handleApprove}
       />
-
     </div>
   );
 }

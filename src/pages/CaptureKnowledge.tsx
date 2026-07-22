@@ -6,8 +6,8 @@ export default function CaptureKnowledge() {
   return (
     <>
       <PageHeader
-        title="Capture Knowledge"
-        description="Upload operational experience and transform it into reusable enterprise knowledge."
+        title="Knowledge Ingestion"
+        description="Upload engineering drawings, maintenance records, SOPs, inspection reports, and industrial documents for AI-powered knowledge extraction."
       />
 
       <WorkflowStepper />
