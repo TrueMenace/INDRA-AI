@@ -173,7 +173,13 @@ Industrial AI Copilot
 
 ## Expert Validation Workspace
 
-![Expert Validation](assets/screenshots/expert-validation.png)
+### AI Extracted Knowledge
+
+![Expert Validation - Part 1](assets/screenshots/expert-validation_1.png)
+
+### Expert Review & Validation
+
+![Expert Validation - Part 2](assets/screenshots/expert-validation_2.png)
 
 ---
 
