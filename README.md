@@ -253,10 +253,6 @@ INDRA AI enables organizations to:
 
 **Ansh Shrivastava**
 
-Team **Hallucinati**
-
-ET AI Hackathon 2.0
-
 ---
 
 ## ⭐ If you found this project interesting, consider giving it a star!
