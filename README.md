@@ -5,15 +5,7 @@
 
 ---
 
-## 🏆 ET AI Hackathon 2.0 Submission
-
-**Team Name:** Hallucinati
-
-**Team Member:** Ansh Shrivastava
-
----
-
-## 📌 Problem Statement
+## 📌 Project Idea
 
 Industrial enterprises generate massive volumes of engineering knowledge in the form of:
 
